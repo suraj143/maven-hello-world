@@ -1,0 +1,23 @@
+#!bin/bash
+
+echo "WORKSPACE LOCATION: $WORKSPACE"
+
+echo "Changing Value Of POM.XML Root Tag: $groupId"
+
+sed -e "1,11s/<groupId>.*<\/groupId>/<groupId>$groupId<\/groupId>/g" pom.xml > pom.xml.tmp
+
+mv pom.xml.tmp  pom.xml
+
+echo "Changing Value Of POM.XML Root Tag: $artifactId"
+
+sed -e "1,11s/<artifactId>.*<\/artifactId>/<artifactId>${artifactId}<\/artifactId>/g" pom.xml > pom.xml.tmp
+
+mv pom.xml.tmp  pom.xml
+
+echo "Changing Value Of POM.XML Root Tag: $version"
+
+sed -e "1,11s/<version>.*<\/version>/<version>${version}<\/version>/g" pom.xml > pom.xml.tmp
+
+mv pom.xml.tmp  pom.xml
+
+cat pom.xml
